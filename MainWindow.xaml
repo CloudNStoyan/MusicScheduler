@@ -7,6 +7,22 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <DockPanel>
+            <Grid DockPanel.Dock="Top" Height="50">
+                <TextBlock Text="Music Scheduler" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="150,5,0,0"/>
+            </Grid>
+            <StatusBar DockPanel.Dock="Bottom">
+                <StatusBarItem>
+                    <TextBlock Text="Currently playing:"/>
+                </StatusBarItem>
+            </StatusBar>
+            <Grid DockPanel.Dock="Right" Width="150">
+            </Grid>
+            
+            <StackPanel Width="150" DockPanel.Dock="Left"></StackPanel>
+            <Grid >
+
+            </Grid>
+        </DockPanel>
     </Grid>
 </Window>
