@@ -13,15 +13,34 @@
             </Grid>
             <StatusBar DockPanel.Dock="Bottom">
                 <StatusBarItem>
-                    <TextBlock Text="Currently playing:"/>
+                    <TextBlock Text="Currently playing:" x:Name="currentlyPlaying"/>
                 </StatusBarItem>
             </StatusBar>
             <Grid DockPanel.Dock="Right" Width="150">
             </Grid>
             
             <StackPanel Width="150" DockPanel.Dock="Left"></StackPanel>
-            <Grid >
-
+            <Grid>
+                <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Width="491">
+                    <StackPanel Orientation="Horizontal">
+                        <Border BorderThickness="1" BorderBrush="Gray" Padding="5">
+                            <StackPanel Orientation="Horizontal">
+                                <Slider Width="305" VerticalAlignment="Center" TickPlacement="BottomRight" Maximum="100" Minimum="1" x:Name="TrackSlider"/>
+                            </StackPanel>
+                        </Border>
+                        <Border BorderThickness="1" BorderBrush="Gray" Padding="5" Margin="5,0,0,0">
+                            <StackPanel Orientation="Horizontal">
+                                <Slider Width="100" Maximum="100" Minimum="1" TickPlacement="BottomRight" Thumb.DragCompleted="VolumeChanged"/>
+                                <Label Content="Volume" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Content="Play" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5" Click="Play"/>
+                        <Button Content="Pause" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5" Click="Pause" Margin="20,0,0,0"/>
+                        <Button Content="Stop" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5" Click="Stop" Margin="20,0,0,0"/>
+                    </StackPanel>
+                </StackPanel>
             </Grid>
         </DockPanel>
     </Grid>
