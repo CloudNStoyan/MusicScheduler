@@ -17,7 +17,7 @@
                 </StatusBarItem>
             </StatusBar>
             <Grid DockPanel.Dock="Right" Width="150">
-                <Border BorderBrush="Gray" BorderThickness="1" Margin="0,0,5,5">
+                <Border BorderBrush="Gray" BorderThickness="1" Width="140">
                     <StackPanel>
                         <Button Content="Add" Margin="10"></Button>
                     </StackPanel>
@@ -30,7 +30,7 @@
                     <StackPanel Orientation="Horizontal">
                         <Border BorderThickness="1" BorderBrush="Gray" Padding="5">
                             <StackPanel Orientation="Horizontal">
-                                <Slider Width="305" VerticalAlignment="Center" TickPlacement="BottomRight" Maximum="100" Minimum="1" x:Name="TrackSlider"/>
+                                <Slider Width="305" VerticalAlignment="Center" TickPlacement="BottomRight" Maximum="100" Minimum="1" x:Name="TrackSlider" Thumb.DragCompleted="TrackSliderChanged"/>
                             </StackPanel>
                         </Border>
                         <Border BorderThickness="1" BorderBrush="Gray" Padding="5" Margin="5,0,0,0">

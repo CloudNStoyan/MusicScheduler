@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
@@ -34,21 +35,13 @@ namespace MusicScheduler
             }
 
             this.outputDevice.Play();
-            this.Timer = new Timer(500) { AutoReset = true };
+            this.Timer = new Timer(1000) { AutoReset = true };
             this.Timer.Elapsed += this.TrackChanged;
             this.Timer.Start();
 
 
 
             this.currentlyPlaying.Text = $"Currently playing: {Path.GetFileName(this.audioFile.FileName)} {this.Track()}";
-
-            int totalSeconds = this.audioFile.TotalTime.Minutes * 60 + this.audioFile.TotalTime.Seconds;
-            int currentSeconds = this.audioFile.CurrentTime.Minutes * 60 + this.audioFile.CurrentTime.Seconds;
-
-            if (currentSeconds != 0)
-            {
-                MessageBox.Show((totalSeconds / currentSeconds).ToString());
-            }
         }
 
         private void TrackChanged(object sender,ElapsedEventArgs e)
@@ -56,6 +49,14 @@ namespace MusicScheduler
             this.Dispatcher?.Invoke(() =>
             {
                 this.currentlyPlaying.Text = $"Currently playing: {Path.GetFileName(this.audioFile.FileName)} {this.Track()}";
+                double totalSeconds = this.audioFile.TotalTime.Minutes * 60 + this.audioFile.TotalTime.Seconds;
+                double currentSeconds = this.audioFile.CurrentTime.Minutes * 60 + this.audioFile.CurrentTime.Seconds;
+
+                if (Math.Abs(currentSeconds) > 0)
+                {
+                    double result = Math.Round(currentSeconds / totalSeconds * 100);
+                    this.TrackSlider.Value = result;
+                }
             });
         }
 
@@ -77,6 +78,8 @@ namespace MusicScheduler
             this.outputDevice = null;
             this.audioFile.Dispose();
             this.audioFile = null;
+            this.TrackSlider.Value = 0;
+            this.currentlyPlaying.Text = string.Empty;
         }
 
         private void VolumeChanged(object sender, DragCompletedEventArgs e)
@@ -95,12 +98,24 @@ namespace MusicScheduler
             {
                 return "";
             }
+            
 
             return
                 $"({this.audioFile.CurrentTime.Minutes.ToString().PadLeft(2, '0')}:" +
                 $"{this.audioFile.CurrentTime.Seconds.ToString().PadLeft(2, '0')}/" +
                 $"{this.audioFile.TotalTime.Minutes.ToString().PadLeft(2, '0')}:" +
                 $"{this.audioFile.TotalTime.Seconds.ToString().PadLeft(2, '0')})";
+        }
+
+        private void TrackSliderChanged(object sender, DragCompletedEventArgs e)
+        {
+            double a = this.TrackSlider.Value;
+
+            double totalSeconds = this.audioFile.TotalTime.Minutes * 60 + this.audioFile.TotalTime.Seconds;
+
+            double result = a / 100 * totalSeconds;
+
+            this.audioFile.CurrentTime = TimeSpan.FromSeconds(result);
         }
     }
 }
