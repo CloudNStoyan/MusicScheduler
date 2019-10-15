@@ -4,6 +4,7 @@ using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 using NAudio.Wave;
 
 namespace MusicScheduler
@@ -107,7 +108,7 @@ namespace MusicScheduler
                 $"{this.audioFile.TotalTime.Seconds.ToString().PadLeft(2, '0')})";
         }
 
-        private void TrackSliderChanged(object sender, DragCompletedEventArgs e)
+        private void TrackChanged(object sender, MouseButtonEventArgs e)
         {
             double a = this.TrackSlider.Value;
 
