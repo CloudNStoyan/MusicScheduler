@@ -118,7 +118,8 @@
                             <Path Data="M 0,0 L 15,10 L 0,20" Fill="Black"/>
                         </Button>
                         <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="35" Padding="5" Click="Pause" Margin="20,0,0,0" Background="Transparent" BorderThickness="0">
-                            Pause
+                            <Rectangle Fill="Black" Height="20" Width="20">
+                            </Rectangle>
                         </Button>
                         <Button Content="Stop" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5" Click="Stop" Margin="20,0,0,0"/>
                     </StackPanel>
