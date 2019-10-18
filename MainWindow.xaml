@@ -108,7 +108,7 @@
                         </Border>
                         <Border BorderThickness="1" BorderBrush="Gray" Padding="5" Margin="5,0,0,0">
                             <StackPanel Orientation="Horizontal">
-                                <Slider Width="100" Maximum="100" Minimum="1" TickPlacement="BottomRight" Thumb.DragCompleted="VolumeChanged"/>
+                                <Slider Width="100" Maximum="100" Minimum="1" TickPlacement="BottomRight" Thumb.DragCompleted="VolumeChanged" Style="{StaticResource Horizontal_Slider}"/>
                                 <Label Content="Volume" />
                             </StackPanel>
                         </Border>
@@ -118,7 +118,7 @@
                             <Path Data="M 0,0 L 15,10 L 0,20" Fill="Black"/>
                         </Button>
                         <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="35" Padding="5" Click="Pause" Margin="20,0,0,0" Background="Transparent" BorderThickness="0">
-                            
+                            <Path Data="M 14,20 H0 V0 H14 M 6,20 H8 V0 H6 V0 Z" Fill="Black" />
                         </Button>
                         <Button  HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5" Click="Stop" Margin="20,0,0,0" Background="Transparent" BorderThickness="0">
                             <Rectangle Fill="Black" Height="20" Width="20">
