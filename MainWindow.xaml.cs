@@ -50,6 +50,7 @@ namespace MusicScheduler
             this.Dispatcher?.Invoke(() =>
             {
                 this.currentlyPlaying.Text = $"Currently playing: {Path.GetFileName(this.audioFile.FileName)} {this.Track()}";
+                this.MainTimer.Text = this.Track();
                 double totalSeconds = this.audioFile.TotalTime.Minutes * 60 + this.audioFile.TotalTime.Seconds;
                 double currentSeconds = this.audioFile.CurrentTime.Minutes * 60 + this.audioFile.CurrentTime.Seconds;
 

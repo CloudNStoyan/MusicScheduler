@@ -102,8 +102,9 @@
                 <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Width="491">
                     <StackPanel Orientation="Horizontal">
                         <Border BorderThickness="1" BorderBrush="Gray" Padding="5">
-                            <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Vertical">
                                 <Slider Style="{StaticResource Horizontal_Slider}" Width="305" VerticalAlignment="Center" TickPlacement="BottomRight" Maximum="100" Minimum="1" x:Name="TrackSlider" PreviewMouseUp="TrackChanged"  IsMoveToPointEnabled="True"/>
+                                <TextBlock x:Name="MainTimer"/>
                             </StackPanel>
                         </Border>
                         <Border BorderThickness="1" BorderBrush="Gray" Padding="5" Margin="5,0,0,0">
@@ -113,7 +114,7 @@
                             </StackPanel>
                         </Border>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                         <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="35" Padding="5" Click="Play" Background="Transparent" BorderThickness="0">
                             <Path Data="M 0,0 L 15,10 L 0,20" Fill="Black"/>
                         </Button>
