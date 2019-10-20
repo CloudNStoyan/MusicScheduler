@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
+        <Color x:Key="ThumbColor">Red</Color>
         <Style x:Key="SliderRepeatButton" TargetType="RepeatButton">
             <Setter Property="SnapsToDevicePixels" Value="true" />
             <Setter Property="OverridesDefaultStyle" Value="true" />
@@ -27,7 +28,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="RepeatButton">
-                        <Border SnapsToDevicePixels="True" Background="Red" BorderBrush="Red" BorderThickness="1" Height="3"/>
+                        <Border SnapsToDevicePixels="True" Background="{Binding Foreground}" BorderBrush="{Binding Foreground}" BorderThickness="1" Height="3"/>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -39,7 +40,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Thumb">
-                        <Ellipse Height="10" Width="10" Fill="Red" />
+                        <Ellipse Height="10" Width="10" Fill="{StaticResource }" />
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -86,7 +87,7 @@
             </Grid>
             <StatusBar DockPanel.Dock="Bottom">
                 <StatusBarItem>
-                    <TextBlock Text="Currently playing:" x:Name="currentlyPlaying"/>
+                    <TextBlock Text="Currently playing:" x:Name="CurrentlyPlaying"/>
                 </StatusBarItem>
             </StatusBar>
             <Grid DockPanel.Dock="Right" Width="150">
@@ -103,7 +104,7 @@
                     <StackPanel Orientation="Horizontal">
                         <Border BorderThickness="1" BorderBrush="Gray" Padding="5">
                             <StackPanel Orientation="Vertical">
-                                <Slider Style="{StaticResource Horizontal_Slider}" Width="305" VerticalAlignment="Center" TickPlacement="BottomRight" Maximum="100" Minimum="1" x:Name="TrackSlider" PreviewMouseUp="TrackChanged"  IsMoveToPointEnabled="True"/>
+                                <Slider Style="{StaticResource Horizontal_Slider}" Width="305" VerticalAlignment="Center" TickPlacement="BottomRight" Maximum="100" Minimum="1" x:Name="TrackSlider" PreviewMouseUp="TrackChanged"  IsMoveToPointEnabled="True" Foreground="Red"/>
                                 <TextBlock x:Name="MainTimer"/>
                             </StackPanel>
                         </Border>
@@ -122,8 +123,7 @@
                             <Path Data="M 14,20 H0 V0 H14 M 6,20 H8 V0 H6 V0 Z" Fill="Black" />
                         </Button>
                         <Button  HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5" Click="Stop" Margin="20,0,0,0" Background="Transparent" BorderThickness="0">
-                            <Rectangle Fill="Black" Height="20" Width="20">
-                            </Rectangle>
+                            <Rectangle Fill="Black" Height="20" Width="20" />
                         </Button>
                     </StackPanel>
                 </StackPanel>
