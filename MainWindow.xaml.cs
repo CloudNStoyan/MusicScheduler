@@ -42,14 +42,14 @@ namespace MusicScheduler
 
 
 
-            this.currentlyPlaying.Text = $"Currently playing: {Path.GetFileName(this.audioFile.FileName)} {this.Track()}";
+            this.CurrentlyPlaying.Text = $"Currently playing: {Path.GetFileName(this.audioFile.FileName)} {this.Track()}";
         }
 
         private void TrackChanged(object sender,ElapsedEventArgs e)
         {
             this.Dispatcher?.Invoke(() =>
             {
-                this.currentlyPlaying.Text = $"Currently playing: {Path.GetFileName(this.audioFile.FileName)} {this.Track()}";
+                this.CurrentlyPlaying.Text = $"Currently playing: {Path.GetFileName(this.audioFile.FileName)} {this.Track()}";
                 this.MainTimer.Text = this.Track();
                 double totalSeconds = this.audioFile.TotalTime.Minutes * 60 + this.audioFile.TotalTime.Seconds;
                 double currentSeconds = this.audioFile.CurrentTime.Minutes * 60 + this.audioFile.CurrentTime.Seconds;
@@ -81,7 +81,7 @@ namespace MusicScheduler
             this.audioFile.Dispose();
             this.audioFile = null;
             this.TrackSlider.Value = 0;
-            this.currentlyPlaying.Text = string.Empty;
+            this.CurrentlyPlaying.Text = string.Empty;
         }
 
         private void VolumeChanged(object sender, DragCompletedEventArgs e)

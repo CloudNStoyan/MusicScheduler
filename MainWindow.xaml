@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
-        <Color x:Key="ThumbColor">Red</Color>
+        <SolidColorBrush Color="Red" x:Key="TrackThumbColor" />
         <Style x:Key="SliderRepeatButton" TargetType="RepeatButton">
             <Setter Property="SnapsToDevicePixels" Value="true" />
             <Setter Property="OverridesDefaultStyle" Value="true" />
@@ -40,7 +40,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Thumb">
-                        <Ellipse Height="10" Width="10" Fill="{StaticResource }" />
+                        <Ellipse Height="10" Width="10" Fill="{StaticResource TrackThumbColor}" />
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
