@@ -102,18 +102,17 @@
             <Grid>
                 <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Width="491">
                     <StackPanel Orientation="Horizontal">
-                        <Border BorderThickness="1" BorderBrush="Gray" Padding="5">
+                        <GroupBox Padding="5" Header="Track">
                             <StackPanel Orientation="Vertical">
                                 <Slider Style="{StaticResource Horizontal_Slider}" Width="305" VerticalAlignment="Center" TickPlacement="BottomRight" Maximum="100" Minimum="1" x:Name="TrackSlider" PreviewMouseUp="TrackChanged"  IsMoveToPointEnabled="True" Foreground="Red"/>
                                 <TextBlock x:Name="MainTimer"/>
                             </StackPanel>
-                        </Border>
-                        <Border BorderThickness="1" BorderBrush="Gray" Padding="5" Margin="5,0,0,0">
+                        </GroupBox>
+                        <GroupBox Padding="5" Margin="5,0,0,0" Header="Volume">
                             <StackPanel Orientation="Horizontal">
                                 <Slider Width="100" Maximum="100" Minimum="1" TickPlacement="BottomRight" Thumb.DragCompleted="VolumeChanged" Style="{StaticResource Horizontal_Slider}"/>
-                                <Label Content="Volume" />
                             </StackPanel>
-                        </Border>
+                        </GroupBox>
                     </StackPanel>
                     <GroupBox Header="Controls" Width="150" HorizontalAlignment="Left">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
