@@ -91,14 +91,14 @@
                 </StatusBarItem>
             </StatusBar>
             <Grid DockPanel.Dock="Right" Width="150">
-                <Border BorderBrush="Gray" BorderThickness="1" Width="140">
+                <GroupBox Header="File Controls" Width="140">
                     <StackPanel>
-                        <Button Content="Add" Margin="10"></Button>
+                        <Button Content="Add" Margin="10" />
                     </StackPanel>
-                </Border>
+                </GroupBox>
             </Grid>
             
-            <StackPanel Width="150" DockPanel.Dock="Left"></StackPanel>
+            <StackPanel Width="150" DockPanel.Dock="Left" />
             <Grid>
                 <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Width="491">
                     <StackPanel Orientation="Horizontal">
