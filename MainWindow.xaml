@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MusicScheduler"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Music Scheduler" Height="450" Width="800">
     <Window.Resources>
         <SolidColorBrush Color="Red" x:Key="TrackThumbColor" />
         <Style x:Key="SliderRepeatButton" TargetType="RepeatButton">
@@ -93,7 +93,14 @@
             <Grid DockPanel.Dock="Right" Width="150">
                 <GroupBox Header="File Controls" Width="140">
                     <StackPanel>
-                        <Button Content="Add" Margin="10" />
+                        <Button HorizontalContentAlignment="Left" Background="Transparent" BorderThickness="0">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal">
+                                    <Path VerticalAlignment="Bottom" Margin="5,0,0,0" Width="24" Height="24" Stretch="Fill" Fill="LawnGreen" Data="F1 M 35,19L 41,19L 41,35L 57,35L 57,41L 41,41L 41,57L 35,57L 35,41L 19,41L 19,35L 35,35L 35,19 Z "/>
+                                    <TextBlock Text="Add" Margin="10,0,0,0" VerticalAlignment="Center" FontFamily="Impact"/>
+                                </StackPanel>   
+                            </Button.Content>
+                        </Button>
                     </StackPanel>
                 </GroupBox>
             </Grid>
