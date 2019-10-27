@@ -109,6 +109,7 @@
                                 </StackPanel>
                             </Button.Content>
                         </Button>
+                        <Button Content="All" />
                     </StackPanel>
                 </GroupBox>
             </Grid>
