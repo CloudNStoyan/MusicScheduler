@@ -18,6 +18,8 @@ namespace MusicScheduler
         private Timer SongTimer { get; set; }
         private Playlist Playlist = new Playlist();
         private bool isNotPlaying = true;
+        private int Min = 6;
+        private int Max = 22;
 
         public MainWindow()
         {
@@ -30,10 +32,17 @@ namespace MusicScheduler
                 {
                     var now = DateTime.Now;
 
-                    if (now.Hour == 20 && this.isNotPlaying)
+                    if (now.Hour >= this.Min && now.Hour < this.Max)
                     {
-                        this.Playlist.Reset();
-                        this.Play(null, new RoutedEventArgs());
+                        if (this.isNotPlaying)
+                        {
+                            this.Playlist.Reset();
+                            this.Play(null, new RoutedEventArgs());
+                        }
+                    }
+                    else
+                    {
+                        this.Stop(null, new RoutedEventArgs());
                     }
                 });
             };
