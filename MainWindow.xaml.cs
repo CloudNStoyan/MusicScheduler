@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.IO;
 using System.Timers;
 using System.Windows;
@@ -13,15 +14,43 @@ namespace MusicScheduler
     {
         private WaveOutEvent outputDevice;
         private AudioFileReader audioFile;
-        private Timer Timer { get; set; }
+        private Timer TrackTimer { get; set; }
+        private Timer SongTimer { get; set; }
+        private Playlist Playlist = new Playlist();
+        private bool isNotPlaying = true;
 
         public MainWindow()
         {
             this.InitializeComponent();
+
+            this.SongTimer = new Timer(1000) {AutoReset = true};
+            this.SongTimer.Elapsed += (sender, args) =>
+            {
+                this.Dispatcher?.Invoke(() =>
+                {
+                    var now = DateTime.Now;
+
+                    if (now.Hour == 20 && this.isNotPlaying)
+                    {
+                        this.Playlist.Reset();
+                        this.Play(null, new RoutedEventArgs());
+                    }
+                });
+            };
+
+            this.SongTimer.Start();
         }
 
         private void Play(object sender, RoutedEventArgs e)
         {
+            if (this.Playlist.Ended)
+            {
+                this.isNotPlaying = true;
+                return;
+            }
+
+            this.isNotPlaying = false;
+
             if (this.outputDevice == null)
             {
                 this.outputDevice = new WaveOutEvent();
@@ -30,15 +59,14 @@ namespace MusicScheduler
 
             if (this.audioFile == null)
             {
-                this.audioFile =
-                    new AudioFileReader("C:\\Users\\Stoyan\\Desktop\\Phoenix_LeagueofLegends.wav") {Volume = 0.1f};
+                this.audioFile = this.Playlist.Next();
                 this.outputDevice.Init(this.audioFile);
             }
 
             this.outputDevice.Play();
-            this.Timer = new Timer(1000) { AutoReset = true };
-            this.Timer.Elapsed += this.TrackChanged;
-            this.Timer.Start();
+            this.TrackTimer = new Timer(1000) { AutoReset = true };
+            this.TrackTimer.Elapsed += this.TrackChanged;
+            this.TrackTimer.Start();
 
 
 
@@ -65,23 +93,22 @@ namespace MusicScheduler
         private void Stop(object sender, RoutedEventArgs e)
         {
             this.outputDevice?.Stop();
-            this.Timer.Stop();
+            this.TrackTimer.Stop();
         }
 
         private void Pause(object sedner, RoutedEventArgs e)
         {
             this.outputDevice?.Pause();
-            this.Timer.Stop();
+            this.TrackTimer.Stop();
         }
 
         private void OnPlayBackStop(object sedner, StoppedEventArgs e)
         {
-            this.outputDevice.Dispose();
-            this.outputDevice = null;
             this.audioFile.Dispose();
             this.audioFile = null;
             this.TrackSlider.Value = 0;
             this.CurrentlyPlaying.Text = string.Empty;
+            this.Play(null, new RoutedEventArgs());
         }
 
         private void VolumeChanged(object sender, DragCompletedEventArgs e)
@@ -118,6 +145,21 @@ namespace MusicScheduler
             double result = a / 100 * totalSeconds;
 
             this.audioFile.CurrentTime = TimeSpan.FromSeconds(result);
+        }
+
+        private void MainWindow_OnClosing(object sender, CancelEventArgs e)
+        {
+            if (this.audioFile != null)
+            {
+                this.audioFile.Dispose();
+                this.audioFile = null;
+            }
+
+            if (this.outputDevice != null)
+            {
+                this.outputDevice.Dispose();
+                this.outputDevice = null;
+            }
         }
     }
 }

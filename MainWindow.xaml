@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MusicScheduler"
         mc:Ignorable="d"
-        Title="Music Scheduler For Cows" Height="450" Width="800">
+        Title="Music Scheduler For Cows" Height="450" Width="800" Closing="MainWindow_OnClosing">
     <Window.Resources>
         <SolidColorBrush Color="Red" x:Key="TrackThumbColor" />
         <Style x:Key="SliderRepeatButton" TargetType="RepeatButton">
@@ -90,37 +90,7 @@
                     <TextBlock Text="Currently playing:" x:Name="CurrentlyPlaying"/>
                 </StatusBarItem>
             </StatusBar>
-            <Grid DockPanel.Dock="Right" Width="150">
-                <GroupBox Header="File Controls" Width="140">
-                    <StackPanel>
-                        <Button HorizontalContentAlignment="Left" Background="Transparent" BorderThickness="0">
-                            <Button.Content>
-                                <StackPanel Orientation="Horizontal">
-                                    <Path VerticalAlignment="Bottom" Margin="5,0,0,0" Width="24" Height="24" Stretch="Fill" Fill="LawnGreen" Data="F1 M 35,19L 41,19L 41,35L 57,35L 57,41L 41,41L 41,57L 35,57L 35,41L 19,41L 19,35L 35,35L 35,19 Z "/>
-                                    <TextBlock Text="Add" Margin="10,0,0,0" VerticalAlignment="Center" FontFamily="Impact"/>
-                                </StackPanel>   
-                            </Button.Content>
-                        </Button>
-                        <Button Background="Transparent" BorderThickness="0" HorizontalAlignment="Left">
-                            <Button.Content>
-                                <StackPanel Orientation="Horizontal">
-                                    <Path Margin="5,0,0,0" Width="24" Height="24" Stretch="Fill" Fill="Red" Data="F1 M 26.9166,22.1667L 37.9999,33.25L 49.0832,22.1668L 53.8332,26.9168L 42.7499,38L 53.8332,49.0834L 49.0833,53.8334L 37.9999,42.75L 26.9166,53.8334L 22.1666,49.0833L 33.25,38L 22.1667,26.9167L 26.9166,22.1667 Z "/>
-                                    <TextBlock Text="Remove" Margin="10,0,0,0" VerticalAlignment="Center" FontFamily="Impact"/>
-                                </StackPanel>
-                            </Button.Content>
-                        </Button>
-                        <Button Background="Transparent" BorderThickness="0" HorizontalAlignment="Left">
-                            <Button.Content>
-                                <StackPanel Orientation="Horizontal">
-                                    <Path Margin="5,0,0,0" Width="24" Height="24" Stretch="Fill" Fill="Gold" Data="F1 M 21,30.0001L 55.9999,30.0001L 55.9999,50L 21,50L 21,30.0001 Z M 52,28L 37,28C 38,25 39.4999,24.0001 39.4999,24.0001L 50.75,24C 51.3023,24 52,24.6977 52,25.25L 52,28 Z M 53.5,52C 54.8807,52 56,53.1193 56,54.5C 56,55.8807 54.8807,57 53.5,57C 52.1193,57 51,55.8807 51,54.5C 51,53.1193 52.1193,52 53.5,52 Z M 46.5,52C 47.8807,52 49,53.1193 49,54.5C 49,55.8807 47.8807,57 46.5,57C 45.1193,57 44,55.8807 44,54.5C 44,53.1193 45.1193,52 46.5,52 Z M 39.5,52C 40.8807,52 42,53.1193 42,54.5C 42,55.8807 40.8807,57 39.5,57C 38.1193,57 37,55.8807 37,54.5C 37,53.1193 38.1193,52 39.5,52 Z "/>
-                                    <TextBlock Text="All" Margin="10,0,0,0" VerticalAlignment="Center" FontFamily="Impact" />
-                                </StackPanel>
-                            </Button.Content>
-                        </Button>
-                    </StackPanel>
-                </GroupBox>
-            </Grid>
-            
+
             <StackPanel Width="150" DockPanel.Dock="Left" />
             <Grid>
                 <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Width="491">
